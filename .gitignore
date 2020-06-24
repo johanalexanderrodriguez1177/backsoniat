@@ -46,4 +46,3 @@ target/
 ### Personal ignore ###
 src/main/java/tv/thekitchen/central/TheKitchenCentralApplication.java
 src/main/java/tv/thekitchen/central/auth/AuthController.java
-src/main/resources/application.properties

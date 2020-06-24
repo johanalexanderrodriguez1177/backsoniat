@@ -31,6 +31,13 @@ public class MenuController {
         return menuService.obtenerDataMenu();
     }
 
+    @PostMapping("/create-menu")
+    @ApiOperation(value = "Crear opcion del menu", notes = "Crear opcion para el menu")
+    public ResponseEntity<?> create(@RequestBody AcMenu acMenu){
+        menuService.guardarMenu(acMenu);
+        return new ResponseEntity(new Mensaje("Data del Usuario registrado."), HttpStatus.CREATED);
+    }
+
     @PutMapping("/update-menu/{id}")
     @ApiOperation(value = "Actualizar Menu", notes = "Actualizar Menu")
     public ResponseEntity<?> update(@RequestBody AcMenu acMenu, @PathVariable("id") Long id){
