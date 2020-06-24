@@ -43,28 +43,6 @@ public class AcMenu {
     @Column(name="level")
     private Long level;
 
-    @ApiModelProperty(value = "Campo Fecha y Hora de Creacion")
-    @Column(name="created_at")
-    private Date created_at;
-
-    @Column(name="updated_at")
-    @ApiModelProperty(value = "Campo Fecha y Hora de Actualizacion")
-    private Date updated_at;
-
-    public AcMenu() {
-    }
-
-    public AcMenu(@NotNull Long id, @NotNull String description, @NotNull String url, @NotNull Long id_rol, @NotNull String icon, @NotNull Long level, Date created_at, Date updated_at) {
-        this.id = id;
-        this.description = description;
-        this.url = url;
-        this.id_rol = id_rol;
-        this.icon = icon;
-        this.level = level;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-    }
-
     public Long getId() {
         return id;
     }
@@ -113,22 +91,6 @@ public class AcMenu {
         this.level = level;
     }
 
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -139,27 +101,22 @@ public class AcMenu {
                 url.equals(acMenu.url) &&
                 id_rol.equals(acMenu.id_rol) &&
                 icon.equals(acMenu.icon) &&
-                level.equals(acMenu.level) &&
-                created_at.equals(acMenu.created_at) &&
-                updated_at.equals(acMenu.updated_at);
+                level.equals(acMenu.level);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description, url, id_rol, icon, level, created_at, updated_at);
+        return Objects.hash(id, description, url, id_rol, icon, level);
     }
 
     @Override
     public String toString() {
         return "AcMenu{" +
-                "id=" + id +
                 ", description='" + description + '\'' +
                 ", url='" + url + '\'' +
                 ", id_rol='" + id_rol + '\'' +
                 ", icon='" + icon + '\'' +
                 ", level='" + level + '\'' +
-                ", created_at='" + created_at + '\'' +
-                ", updated_at='" + updated_at + '\'' +
                 '}';
     }
 

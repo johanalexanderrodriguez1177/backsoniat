@@ -61,8 +61,6 @@ public class DataUsersController {
         dataUserUpdate.setId_user(acDataUsers.getId_user());
         dataUserUpdate.setId_country(acDataUsers.getId_country());
         dataUserUpdate.setId_nationality(acDataUsers.getId_nationality());
-        dataUserUpdate.setCreated_at(acDataUsers.getCreated_at());
-        dataUserUpdate.setUpdated_at(acDataUsers.getUpdated_at());
         dataUsersService.guardarData(dataUserUpdate);
         return new ResponseEntity(new Mensaje("Usuario actualizado"), HttpStatus.CREATED);
     }

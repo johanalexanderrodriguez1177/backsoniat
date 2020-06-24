@@ -73,34 +73,6 @@ public class AcDataUsers {
     @Column(name="id_nationality")
     private Long id_nationality;
 
-    @ApiModelProperty(value = "Campo Fecha y Hora de Creacion")
-    @Column(name="created_at")
-    private Date created_at;
-
-    @Column(name="updated_at")
-    @ApiModelProperty(value = "Campo Fecha y Hora de Actualizacion")
-    private Date updated_at;
-
-    public AcDataUsers() {
-    }
-
-    public AcDataUsers(@NotNull Long id, @NotNull Long identification_card, @NotNull String names, @NotNull String last_names, @NotNull Long id_gender, @NotNull Date birth_date, String mobile_phone, String local_telephone, String image_user, @NotNull Long id_user, @NotNull Long id_country, @NotNull Long id_nationality, Date created_at, Date updated_at) {
-        this.id = id;
-        this.identification_card = identification_card;
-        this.names = names;
-        this.last_names = last_names;
-        this.id_gender = id_gender;
-        this.birth_date = birth_date;
-        this.mobile_phone = mobile_phone;
-        this.local_telephone = local_telephone;
-        this.image_user = image_user;
-        this.id_user = id_user;
-        this.id_country = id_country;
-        this.id_nationality = id_nationality;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-    }
-
     public Long getId() {
         return id;
     }
@@ -197,22 +169,6 @@ public class AcDataUsers {
         this.id_nationality = id_nationality;
     }
 
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -229,20 +185,17 @@ public class AcDataUsers {
                 image_user.equals(that.image_user) &&
                 id_user.equals(that.id_user) &&
                 id_country.equals(that.id_country) &&
-                id_nationality.equals(that.id_nationality) &&
-                created_at.equals(that.created_at) &&
-                updated_at.equals(that.updated_at);
+                id_nationality.equals(that.id_nationality);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, identification_card, names, last_names, birth_date, id_gender, mobile_phone, local_telephone, image_user, id_user, id_country, id_nationality, created_at, updated_at);
+        return Objects.hash(id, identification_card, names, last_names, birth_date, id_gender, mobile_phone, local_telephone, image_user, id_user, id_country, id_nationality);
     }
 
     @Override
     public String toString() {
         return "AcDataUsers{" +
-                "id=" + id +
                 ", identification_card='" + identification_card + '\'' +
                 ", names='" + names + '\'' +
                 ", last_names='" + last_names + '\'' +
@@ -254,8 +207,6 @@ public class AcDataUsers {
                 ", id_user='" + id_user + '\'' +
                 ", id_country='" + id_country + '\'' +
                 ", id_nationality='" + id_nationality + '\'' +
-                ", created_at='" + created_at + '\'' +
-                ", updated_at='" + updated_at + '\'' +
                 '}';
     }
 

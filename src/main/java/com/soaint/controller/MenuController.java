@@ -49,8 +49,6 @@ public class MenuController {
         menuUpdate.setId_rol(acMenu.getId_rol());
         menuUpdate.setIcon(acMenu.getIcon());
         menuUpdate.setLevel(acMenu.getLevel());
-        menuUpdate.setCreated_at(acMenu.getCreated_at());
-        menuUpdate.setUpdated_at(acMenu.getUpdated_at());
         menuService.guardarMenu(menuUpdate);
         return new ResponseEntity(new Mensaje("Usuario actualizado"), HttpStatus.CREATED);
     }
