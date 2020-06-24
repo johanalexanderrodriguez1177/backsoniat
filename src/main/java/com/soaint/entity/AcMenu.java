@@ -1,56 +1,85 @@
 package com.soaint.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name="ac_menu")
+@ApiModel("Modelo => MENU")
 public class AcMenu {
 
     @Id
+    @NotNull
+    @ApiModelProperty(value = "Campo Id Autoincrementable del Menu", required = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_menu;
+    private Long id;
 
-    @Column(name="descripcion")
-    private String descripcion;
+    @NotNull
+    @ApiModelProperty(value = "Campo Id Descripcion", required = true)
+    @Column(name="description")
+    private String description;
 
+    @NotNull
+    @ApiModelProperty(value = "Campo url", required = true)
     @Column(name="url")
     private String url;
 
+    @NotNull
+    @ApiModelProperty(value = "Campo Id Rol", required = true)
     @Column(name="id_rol")
     private Long id_rol;
 
+    @ApiModelProperty(value = "Campo Icono")
     @Column(name="icon")
     private String icon;
 
-    @Column(name="id_padre")
-    private Long id_padre;
+    @ApiModelProperty(value = "Campo Nivel")
+    @Column(name="level")
+    private Long level;
 
-    @Column(name="id_abuelo")
-    private Long id_abuelo;
-
+    @NotNull
+    @ApiModelProperty(value = "Campo Fecha y Hora de Creacion", required = true)
     @Column(name="created_at")
     private Timestamp created_at;
 
     @Column(name="updated_at")
+    @ApiModelProperty(value = "Campo Fecha y Hora de Actualizacion")
     private Timestamp updated_at;
 
-    public Long getId_menu() {
-        return id_menu;
+    public AcMenu() {
     }
 
-    public void setId_menu(Long id_menu) {
-        this.id_menu = id_menu;
+    public AcMenu(@NotNull Long id, @NotNull String description, @NotNull String url, @NotNull Long id_rol, @NotNull String icon, @NotNull Long level, @NotNull Timestamp created_at, Timestamp updated_at) {
+        this.id = id;
+        this.description = description;
+        this.url = url;
+        this.id_rol = id_rol;
+        this.icon = icon;
+        this.level = level;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public Long getId() {
+        return id;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getUrl() {
@@ -77,20 +106,12 @@ public class AcMenu {
         this.icon = icon;
     }
 
-    public Long getId_padre() {
-        return id_padre;
+    public Long getLevel() {
+        return level;
     }
 
-    public void setId_padre(Long id_padre) {
-        this.id_padre = id_padre;
-    }
-
-    public Long getId_abuelo() {
-        return id_abuelo;
-    }
-
-    public void setId_abuelo(Long id_abuelo) {
-        this.id_abuelo = id_abuelo;
+    public void setLevel(Long level) {
+        this.level = level;
     }
 
     public Timestamp getCreated_at() {
@@ -114,19 +135,19 @@ public class AcMenu {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AcMenu acMenu = (AcMenu) o;
-        return Objects.equals(id_menu, acMenu.id_menu) &&
-                Objects.equals(descripcion, acMenu.descripcion) &&
-                Objects.equals(url, acMenu.url) &&
-                Objects.equals(id_rol, acMenu.id_rol) &&
-                Objects.equals(icon, acMenu.icon) &&
-                Objects.equals(id_padre, acMenu.id_padre) &&
-                Objects.equals(id_abuelo, acMenu.id_abuelo) &&
-                Objects.equals(created_at, acMenu.created_at) &&
-                Objects.equals(updated_at, acMenu.updated_at);
+        return id.equals(acMenu.id) &&
+                description.equals(acMenu.description) &&
+                url.equals(acMenu.url) &&
+                id_rol.equals(acMenu.id_rol) &&
+                icon.equals(acMenu.icon) &&
+                level.equals(acMenu.level) &&
+                created_at.equals(acMenu.created_at) &&
+                updated_at.equals(acMenu.updated_at);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_menu, descripcion, url, id_rol, icon, id_padre, id_abuelo, created_at, updated_at);
+        return Objects.hash(id, description, url, id_rol, icon, level, created_at, updated_at);
     }
+
 }

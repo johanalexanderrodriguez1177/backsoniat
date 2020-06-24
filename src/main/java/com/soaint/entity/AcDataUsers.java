@@ -1,169 +1,215 @@
 package com.soaint.entity;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name="ac_data_users")
-@Api(tags = "USERS")
+@ApiModel("Modelo => USERS")
 public class AcDataUsers {
 
     @Id
+    @NotNull
+    @ApiModelProperty(value = "Campo Id Autoincrementable de Usuarios", required = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_data_users;
+    private Long id;
 
-    @Column(name="cedula")
-    private Long cedula;
+    @NotNull
+    @ApiModelProperty(value = "Campo Documento de Identificacion", required = true)
+    @Column(name="identification_card")
+    private Long identification_card;
 
-    @Column(name="nombres")
-    private String nombres;
+    @NotNull
+    @ApiModelProperty(value = "Campo Nombres", required = true)
+    @Column(name="names")
+    private String names;
 
-    @Column(name="apellidos")
-    private String apellidos;
+    @NotNull
+    @ApiModelProperty(value = "Campo Apellidos", required = true)
+    @Column(name="last_names")
+    private String last_names;
 
-    @Column(name="fecha_nacimiento")
-    private Date fecha_nacimiento;
+    @NotNull
+    @ApiModelProperty(value = "Campo Fecha de Nacimiento", required = true)
+    @Column(name="birth_date")
+    private Date birth_date;
 
-    @Column(name="id_genero")
-    private Long id_genero;
+    @NotNull
+    @ApiModelProperty(value = "Campo Genero", required = true)
+    @Column(name="id_gender")
+    private Long id_gender;
 
-    @Column(name="telefono_movil")
-    private String telefono_movil;
+    @ApiModelProperty(value = "Campo Telefono Celular")
+    @Column(name="mobile_phone")
+    private String mobile_phone;
 
-    @Column(name="telefono_local")
-    private String telefono_local;
+    @ApiModelProperty(value = "Campo Telefono Local")
+    @Column(name="local_telephone")
+    private String local_telephone;
 
-    @Column(name="imagen_user")
-    private String imagen_user;
+    @ApiModelProperty(value = "Campo Imagen Usuario")
+    @Column(name="image_user")
+    private String image_user;
 
+    @NotNull
+    @ApiModelProperty(value = "Campo Id Usuario", required = true)
     @Column(name="id_user")
     private Long id_user;
 
-    @Column(name="id_pais")
-    private Long id_pais;
+    @NotNull
+    @ApiModelProperty(value = "Campo Id Pais", required = true)
+    @Column(name="id_country")
+    private Long id_country;
 
-    @Column(name="id_nacionalidad")
-    private Long id_nacionalidad;
+    @NotNull
+    @ApiModelProperty(value = "Campo Id Nacionalidad", required = true)
+    @Column(name="id_nationality")
+    private Long id_nationality;
 
+    @ApiModelProperty(value = "Campo Fecha y Hora de Creacion")
     @Column(name="created_at")
-    private Timestamp created_at;
+    private Date created_at;
 
     @Column(name="updated_at")
-    private Timestamp updated_at;
+    @ApiModelProperty(value = "Campo Fecha y Hora de Actualizacion")
+    private Date updated_at;
+
+    public AcDataUsers() {
+    }
+
+    public AcDataUsers(@NotNull Long id, @NotNull Long identification_card, @NotNull String names, @NotNull String last_names, @NotNull Long id_gender, @NotNull Date birth_date, String mobile_phone, String local_telephone, String image_user, @NotNull Long id_user, @NotNull Long id_country, @NotNull Long id_nationality, Date created_at, Date updated_at) {
+        this.id = id;
+        this.identification_card = identification_card;
+        this.names = names;
+        this.last_names = last_names;
+        this.id_gender = id_gender;
+        this.birth_date = birth_date;
+        this.mobile_phone = mobile_phone;
+        this.local_telephone = local_telephone;
+        this.image_user = image_user;
+        this.id_user = id_user;
+        this.id_country = id_country;
+        this.id_nationality = id_nationality;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+    }
 
     public Long getId() {
-        return id_data_users;
+        return id;
     }
 
-    public void setId(Long id_data_users) {
-        this.id_data_users = id_data_users;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getCedula() {
-        return cedula;
+    public Long getIdentification_card() {
+        return identification_card;
     }
 
-    public void setCedula(Long cedula) {
-        this.cedula = cedula;
+    public void setIdentification_card(Long identification_card) {
+        this.identification_card = identification_card;
     }
 
-    public String getName() {
-        return nombres;
+    public String getNames() {
+        return names;
     }
 
-    public void setName(String nombres) {
-        this.nombres = nombres;
+    public void setNames(String names) {
+        this.names = names;
     }
 
-    public String getLastName() {
-        return apellidos;
+    public String getLast_names() {
+        return last_names;
     }
 
-    public void setLastName(String apellidos) {
-        this.apellidos = apellidos;
+    public void setLast_names(String last_names) {
+        this.last_names = last_names;
     }
 
-    public Date getFechaNacimiento() {
-        return fecha_nacimiento;
+    public Date getBirth_date() {
+        return birth_date;
     }
 
-    public void setFechaNacimiento(Date fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setBirth_date(Date birth_date) {
+        this.birth_date = birth_date;
     }
 
-    public Long getGenero() {
-        return id_genero;
+    public Long getId_gender() {
+        return id_gender;
     }
 
-    public void setGenero(Long id_genero) {
-        this.id_genero = id_genero;
+    public void setId_gender(Long id_gender) {
+        this.id_gender = id_gender;
     }
 
-    public String getTelefonoMovil() {
-        return telefono_movil;
+    public String getMobile_phone() {
+        return mobile_phone;
     }
 
-    public void setTelefonoMovil(String telefono_movil) {
-        this.telefono_movil = telefono_movil;
+    public void setMobile_phone(String mobile_phone) {
+        this.mobile_phone = mobile_phone;
     }
 
-    public String getTelefonolocal() {
-        return telefono_local;
+    public String getLocal_telephone() {
+        return local_telephone;
     }
 
-    public void setTelefonolocal(String telefono_local) {
-        this.telefono_local = telefono_local;
+    public void setLocal_telephone(String local_telephone) {
+        this.local_telephone = local_telephone;
     }
 
-    public String getImagenUser() {
-        return imagen_user;
+    public String getImage_user() {
+        return image_user;
     }
 
-    public void setImagenUser(String imagen_user) {
-        this.imagen_user = imagen_user;
+    public void setImage_user(String image_user) {
+        this.image_user = image_user;
     }
 
-    public Long getIdUser() {
+    public Long getId_user() {
         return id_user;
     }
 
-    public void setIdUser(Long id_user) {
+    public void setId_user(Long id_user) {
         this.id_user = id_user;
     }
 
-    public Long getIdPais() {
-        return id_pais;
+    public Long getId_country() {
+        return id_country;
     }
 
-    public void setIdPais(Long id_pais) {
-        this.id_pais = id_pais;
+    public void setId_country(Long id_country) {
+        this.id_country = id_country;
     }
 
-    public Long getIdNacionalidad() {
-        return id_nacionalidad;
+    public Long getId_nationality() {
+        return id_nationality;
     }
 
-    public void setIdNacionalidad(Long id_nacionalidad) {
-        this.id_nacionalidad = id_nacionalidad;
+    public void setId_nationality(Long id_nationality) {
+        this.id_nationality = id_nationality;
     }
 
-    public Timestamp getCreatedAt() {
+    public Date getCreated_at() {
         return created_at;
     }
 
-    public void setCreatedAt(Timestamp created_at) {
+    public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
 
-    public Timestamp getUpdatedAt() {
+    public Date getUpdated_at() {
         return updated_at;
     }
 
-    public void setUpdatedAt(Timestamp updated_at) {
+    public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
     }
 
@@ -171,25 +217,46 @@ public class AcDataUsers {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AcDataUsers ac_data_users = (AcDataUsers) o;
-        return Objects.equals(id_data_users, ac_data_users.id_data_users) &&
-                Objects.equals(cedula, ac_data_users.cedula) &&
-                Objects.equals(nombres, ac_data_users.nombres) &&
-                Objects.equals(apellidos, ac_data_users.apellidos) &&
-                Objects.equals(fecha_nacimiento, ac_data_users.fecha_nacimiento) &&
-                Objects.equals(id_genero, ac_data_users.id_genero) &&
-                Objects.equals(telefono_movil, ac_data_users.telefono_movil) &&
-                Objects.equals(telefono_local, ac_data_users.telefono_local) &&
-                Objects.equals(imagen_user, ac_data_users.imagen_user) &&
-                Objects.equals(id_user, ac_data_users.id_user) &&
-                Objects.equals(id_pais, ac_data_users.id_pais) &&
-                Objects.equals(id_nacionalidad, ac_data_users.id_nacionalidad);
+        AcDataUsers that = (AcDataUsers) o;
+        return id.equals(that.id) &&
+                identification_card.equals(that.identification_card) &&
+                names.equals(that.names) &&
+                last_names.equals(that.last_names) &&
+                birth_date.equals(that.birth_date) &&
+                id_gender.equals(that.id_gender) &&
+                mobile_phone.equals(that.mobile_phone) &&
+                local_telephone.equals(that.local_telephone) &&
+                image_user.equals(that.image_user) &&
+                id_user.equals(that.id_user) &&
+                id_country.equals(that.id_country) &&
+                id_nationality.equals(that.id_nationality) &&
+                created_at.equals(that.created_at) &&
+                updated_at.equals(that.updated_at);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_data_users, cedula, nombres, apellidos, fecha_nacimiento,
-                id_genero, telefono_movil, telefono_local, imagen_user, id_user, id_pais, id_nacionalidad);
+        return Objects.hash(id, identification_card, names, last_names, birth_date, id_gender, mobile_phone, local_telephone, image_user, id_user, id_country, id_nationality, created_at, updated_at);
+    }
+
+    @Override
+    public String toString() {
+        return "AcDataUsers{" +
+                "id=" + id +
+                ", identification_card='" + identification_card + '\'' +
+                ", names='" + names + '\'' +
+                ", last_names='" + last_names + '\'' +
+                ", birth_date='" + birth_date + '\'' +
+                ", id_gender='" + id_gender + '\'' +
+                ", mobile_phone='" + mobile_phone + '\'' +
+                ", local_telephone='" + local_telephone + '\'' +
+                ", image_user='" + image_user + '\'' +
+                ", id_user='" + id_user + '\'' +
+                ", id_country='" + id_country + '\'' +
+                ", id_nationality='" + id_nationality + '\'' +
+                ", created_at='" + created_at + '\'' +
+                ", updated_at='" + updated_at + '\'' +
+                '}';
     }
 
 }
